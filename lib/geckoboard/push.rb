@@ -1,4 +1,3 @@
-gem 'httparty'
 require 'httparty'
 require 'json'
 
