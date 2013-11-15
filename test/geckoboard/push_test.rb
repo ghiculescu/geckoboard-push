@@ -45,6 +45,12 @@ class PushTest < Test::Unit::TestCase
     assert_equal true, @push.rag(1,2,3)
   end
 
+  def test_rag_with_text
+    test_array = [{"value" => 1, "text" => "test1"}, {"value" => 2, "text" => "test2"}, {"value" => 3, "text" => "test3"}]
+    expect_http_request({"api_key" => "12345", "data" => {"item" => test_array}}.to_json)
+    assert_equal true, @push.rag_with_text(test_array)
+  end
+
   def test_line
     expect_http_request({"api_key" => "12345", "data" => {"item" => [1,2,3], "settings" => {"axisx" => "x axis", "axisy" => "y axis", "colour" => "ff9900"}}}.to_json)
     assert_equal true, @push.line([1,2,3], "ff9900", "x axis", "y axis")

@@ -56,6 +56,11 @@ module Geckoboard
       self.push(:item => [{:value => red}, {:value => amber}, {:value => green}])
     end
 
+    # array of hashes [{:value => value, :text => ""}]
+    def rag_with_text(items)
+      self.push(:item => items)
+    end
+
     # Values should be an array of numeric values
     # Colour, x_axis and y_axis are optional settings
     def line(values, colour = nil, x_axis = nil, y_axis = nil)
