@@ -13,6 +13,7 @@ Exposes a Geckoboard::Push class allowing updates for the following widget types
 * number and secondary value
 * text
 * RAG
+* RAG with text
 * line chart
 * pie chart
 * geckometer
