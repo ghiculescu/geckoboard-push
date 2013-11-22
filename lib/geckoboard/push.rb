@@ -51,6 +51,23 @@ module Geckoboard
       self.push(:item => data)
     end
 
+    # Items should be an array of hashes, each hash containing:
+    # - text (required)
+    # - highlight (bool, optional)
+    # - label (hash, optional) consisting of:
+    #   - name (string, optional)
+    #   - color (string, optional)
+    # - description (string, optional)
+    def list(items)
+      items = items.map do |item|
+        new_item = {title: {text: item[:text], highlight: item[:highlight] || false}}
+        new_item.merge!(description: item[:description]) unless item[:description].nil?
+        new_item.merge!(label: item[:label]) unless item[:label].nil?
+        new_item
+      end
+      self.push(items)
+    end
+
     # Red, amber and green should be values
     def rag(red, amber, green)
       self.push(:item => [{:value => red}, {:value => amber}, {:value => green}])
